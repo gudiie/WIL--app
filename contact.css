@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #502dde;
+    padding: 10px 20px;
+}
+.logo img {
+    height: 50px;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+.nav-links li {
+    margin-left: 20px;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover {
+    color: #f4a261;
+}
+.contact-us {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+h1, h2 {
+    color: #333;
+}
+.contact-info {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact-info i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: #007bff;
+}
+.locations {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.location {
+    text-align: center;
+}
+.location img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+.social-icons {
+    margin-top: 30px;
+}
+.social-icons a {
+    font-size: 2rem;
+    margin: 0 15px;
+    color: #333;
+    text-decoration: none;
+}
+.social-icons a:hover {
+    color: #007bff;
+}
+.social-icons i {
+    cursor: pointer;
+}
+footer {
+    background-color: #502dde;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.footer-content p {
+    margin: 0;
+}
+.footer-content a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.footer-content a:hover {
+    text-decoration: underline;
+}

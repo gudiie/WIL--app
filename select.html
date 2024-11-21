@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Application</title>
+    <link rel="stylesheet" href="calculation.css"> 
+</head>
+<body>
+
+    <!-- Application Form Section -->
+    <section class="application-form">
+        <h1>Course Application</h1>
+
+        <!-- User Information Form -->
+        <form id="courseForm">
+            <div class="form-group">
+                <label for="name">Name and Surname:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Cell Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <!-- Course Selection Section -->
+            <h2>Select Course(s)</h2>
+
+            <div class="course-selection">
+                <label><input type="checkbox" id="course1" name="course" value="750"> Child Minding (R750)</label><br>
+
+                <label><input type="checkbox" id="course2" name="course" value="750"> Cooking (R750)</label><br>
+
+                <label><input type="checkbox" id="course3" name="course" value="750"> Garden Maintenance (R750)</label><br>
+
+                <label><input type="checkbox" id="course4" name="course" value="750"> First Aid (R1500)</label><br>
+
+                <label><input type="checkbox" id="course5" name="course" value="750"> Sewing (R1500)</label><br>
+
+                <label><input type="checkbox" id="course6" name="course" value="750"> Landscaping (R1500)</label><br>
+
+                <label><input type="checkbox" id="course7" name="course" value="750"> Life Skills (R1500)</label><br>
+            </div>
+
+            <!-- Calculate Button -->
+            <button type="button" id="calculateBtn">Calculate Total</button>
+
+            <!-- Display Total Fee -->
+            <div class="total-fee">
+                <p>Full Amount: R<span id="fullAmount">0</span></p>
+                <p>Discount: R<span id="discountAmount">0</span></p>
+                <p>VAT (15%): R<span id="vatAmount">0</span></p>
+                <p><strong>Total Amount: R<span id="totalAmount">0</span></strong></p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submitBtn">Submit Application</button>
+        </form>
+    </section>
+
+    <!-- JavaScript for Calculation Logic -->
+    <script>
+        // Calculate total fee on button click
+        document.getElementById('calculateBtn').addEventListener('click', function () {
+            const courses = document.querySelectorAll('input[name="course"]:checked');
+            let fullAmount = 0;
+            let discount = 0;
+
+            // Calculate the full amount of selected courses
+            courses.forEach(function(course) {
+                fullAmount += parseFloat(course.value);
+            });
+
+            // Apply discount based on the number of selected courses
+            const selectedCoursesCount = courses.length;
+
+            if (selectedCoursesCount === 2) {
+                discount = 0.05; // 5% discount
+            } else if (selectedCoursesCount === 3) {
+                discount = 0.10; // 10% discount
+            } else if (selectedCoursesCount > 3) {
+                discount = 0.15; // 15% discount
+            }
+
+            const discountAmount = fullAmount * discount;
+            const discountedTotal = fullAmount - discountAmount;
+
+            // Apply VAT (15%)
+            const vat = 0.15;
+            const vatAmount = discountedTotal * vat;
+            const finalTotal = discountedTotal + vatAmount;
+
+            // Display the amounts
+            document.getElementById('fullAmount').textContent = fullAmount.toFixed(2);
+            document.getElementById('discountAmount').textContent = discountAmount.toFixed(2);
+            document.getElementById('vatAmount').textContent = vatAmount.toFixed(2);
+            document.getElementById('totalAmount').textContent = finalTotal.toFixed(2);
+        });
+
+        // Handle form submission and redirect to the success page
+        document.getElementById('courseForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+            window.location.href = "success.html"; // Redirect to the success page
+        });
+    </script>
+
+</body>
+</html>
